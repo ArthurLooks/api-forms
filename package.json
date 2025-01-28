@@ -1,0 +1,23 @@
+{
+  "name": "api-forms",
+  "version": "1.0.0",
+  "description": "Api para capturar dados de formulários",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --env-file .env --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file .env index.js"
+  },
+  "author": "ArthurLooks",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^5.2.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "eslint": "^9.18.0",
+    "globals": "^15.14.0"
+  },
+  "type": "module"
+}
