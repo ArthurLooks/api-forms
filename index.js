@@ -1,9 +1,15 @@
 import Fastify from 'fastify'
+import cors from '@fastify/cors'
 import { connect, createLeads, getLeads, deleteLeads } from './db.js'
 
 const db = await connect()
 
 const server = Fastify()
+
+await server.register(cors, {
+	origin: true,
+	methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+})
 
 server.post('/leads', async (request, reply) => {
 	const { nome, email, telefone } = request.body
@@ -11,7 +17,7 @@ server.post('/leads', async (request, reply) => {
 	await createLeads({
 		nome,
 		email,
-		telefone
+		telefone,
 	})
 
 	return reply.status(201).send('Cadastro realizado com sucesso')
@@ -29,5 +35,5 @@ server.delete('/leads/:id', async (request, reply) => {
 })
 
 server.listen({
-	port: process.env.PORT
+	port: process.env.PORT,
 })
