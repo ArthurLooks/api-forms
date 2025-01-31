@@ -12,7 +12,7 @@ await server.register(cors, {
 })
 
 server.post('/leads', async (request, reply) => {
-	const { nome, email, telefone } = request.body
+	let { nome, email, telefone } = request.body
 
 	await createLeads({
 		nome,
@@ -24,8 +24,8 @@ server.post('/leads', async (request, reply) => {
 })
 
 server.get('/leads', async (request) => {
-	const search = request.query.search
-	const leads = await getLeads(search)
+	let search = request.query.search
+	let leads = await getLeads(search)
 	return leads
 })
 
